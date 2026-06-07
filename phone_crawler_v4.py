@@ -230,16 +230,21 @@ def build_osint_links(parsed: phonenumbers.PhoneNumber) -> dict:
     intl_full  = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
 
     return {
+        # ── التواصل المباشر (بيفتح تطبيق الواتساب فوراً وبوريك إذا الرقم شغال) ──
+        "WhatsApp":   f"https://wa.me/{e164_clean}",
+        
+        # ── محركات البحث والأرشيف ──
         "Truecaller": f"https://www.truecaller.com/search/{region.lower()}/{e164_clean}",
         "Google":     f"https://www.google.com/search?q=%220{national}%22+OR+%22{urllib.parse.quote(intl_full)}%22",
         "NumLookup":  f"https://www.numlookupapi.com/lookup?phone={e164_clean}",
         "Archive.org": f"https://web.archive.org/web/*/\"{e164_clean}\"",
-        "WhatsApp":   f"whatsapp://send?phone={e164_clean}",
-        "Instagram":  f"instagram://tag?name={e164_clean}",
-        "Twitter/X":  f"twitter://search?query=0{national}",
-        "TikTok":     f"snssdk1233://search?keyword=0{national}",
-        "LinkedIn":   f"linkedin://search/?keywords=0{national}",
-        "Facebook":   f"fb://search/?keyword=0{national}", 
+        
+        # ── شبكات التواصل (البحث من خلال المتصفح أضمن وأدق للـ OSINT) ──
+        "Facebook":   f"https://www.facebook.com/search/top/?q=0{national}",
+        "Instagram":  f"https://www.instagram.com/explore/tags/{e164_clean}/",
+        "Twitter/X":  f"https://x.com/search?q=0{national}&f=user",
+        "TikTok":     f"https://www.tiktok.com/search/user?q=0{national}",
+        "LinkedIn":   f"https://www.linkedin.com/search/results/all/?keywords=0{national}",
     }
 
 def open_links_menu(links):
