@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone OSINT v4 — مستكشف الأرقام الميداني</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░ GRID OVERLAY ░░ -->
+  <div class="grid-overlay"></div>
+
+  <!-- ░░ SCANLINE ░░ -->
+  <div class="scanline"></div>
+
+  <!-- ░░ NAV ░░ -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">PHONE<span class="accent">OSINT</span></span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">المميزات</a>
+      <a href="#install">التثبيت</a>
+      <a href="#demo">معاينة</a>
+      <a href="https://github.com/satalet/phone-osint-v4-test" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <!-- ░░ HERO ░░ -->
+  <section class="hero">
+    <div class="hero-tag">
+      <span class="dot"></span> v4.0 — الإصدار الأحدث
+    </div>
+
+    <h1 class="hero-title">
+      مستكشف الأرقام<br />
+      <span class="title-line2">الميداني <span class="accent-glow">الشامل</span></span>
+    </h1>
+
+    <p class="hero-sub">
+      أداة OSINT مفتوحة المصدر للكشف عن بيانات أرقام الهاتف —<br />
+      APIs، أرشيف الإنترنت، شبكات التواصل، قاعدة بيانات محلية.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#install" class="btn-primary">
+        <span class="btn-icon">⬇</span> تثبيت الأداة
+      </a>
+      <a href="https://github.com/satalet/phone-osint-v4-test" target="_blank" class="btn-outline">
+        <span class="btn-icon">⌥</span> عرض الكود
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">مصادر OSINT</span>
+      </div>
+      <div class="stat-div">|</div>
+      <div class="stat">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">شبكة اجتماعية</span>
+      </div>
+      <div class="stat-div">|</div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">دولة مدعومة</span>
+      </div>
+      <div class="stat-div">|</div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">سجل محلي SQLite</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ TERMINAL DEMO ░░ -->
+  <section class="terminal-section" id="demo">
+    <div class="section-label">// معاينة مباشرة</div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="t-dot red"></span>
+        <span class="t-dot yellow"></span>
+        <span class="t-dot green"></span>
+        <span class="t-title">phone_crawler_v4.py — kali@kali</span>
+      </div>
+      <div class="terminal-body" id="termBody">
+        <div class="t-line dim">╔══════════════════════════════════════════════════════╗</div>
+        <div class="t-line dim">║     📡 مستكشف الأرقام المتقدم الشامل الميداني       ║</div>
+        <div class="t-line dim">║              Phone OSINT Tool v4.0                   ║</div>
+        <div class="t-line dim">╚══════════════════════════════════════════════════════╝</div>
+        <div class="t-line"></div>
+        <div class="t-line green">[✔] تم تحميل قاعدة البيانات — osint_history.db</div>
+        <div class="t-line yellow">[*] أدخل رقم الهاتف: <span class="cursor-blink">0549012071</span></div>
+        <div class="t-line"></div>
+        <div class="t-line">[*] اختر الدولة الافتراضية:</div>
+        <div class="t-line dim">    1. فلسطين 🇵🇸  (+970)</div>
+        <div class="t-line accent">    2. إسرائيل 🇮🇱  (+972)  ← تم الاختيار</div>
+        <div class="t-line"></div>
+        <div class="t-line green">[✔] الرقم صالح دولياً: +972549012071</div>
+        <div class="t-line"></div>
+        <div class="t-line dim">┌─────────────────────────────────────────────────────┐</div>
+        <div class="t-line dim">│  الصيغة الدولية  : +972 54-901-2071                │</div>
+        <div class="t-line dim">│  الدولة / المنطقة: إسرائيل / فلسطين المحتلة        │</div>
+        <div class="t-line dim">│  الشركة المشغلة  : HOT Mobile 🇮🇱                   │</div>
+        <div class="t-line dim">│  نوع الخط        : موبايل 📱                        │</div>
+        <div class="t-line dim">│  المنطقة الزمنية : Asia/Jerusalem                  │</div>
+        <div class="t-line dim">└─────────────────────────────────────────────────────┘</div>
+        <div class="t-line"></div>
+        <div class="t-line yellow">[*] جاري الفحص عبر Numverify API...</div>
+        <div class="t-line green">[✔] Carrier: HOT Mobile | Line: mobile | Location: Israel</div>
+        <div class="t-line yellow">[*] جاري فحص مستوى الخطورة عبر IPQualityScore...</div>
+        <div class="t-line green">[✔] Fraud Score: [██░░░░░░░░] 20% | SPAM: لا ✔️</div>
+        <div class="t-line yellow">[*] جاري البحث في Archive.org...</div>
+        <div class="t-line dim">[–] لا توجد نتائج في Archive.org.</div>
+        <div class="t-line green">[✔] تم حفظ نتيجة الفحص في قاعدة البيانات.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ FEATURES ░░ -->
+  <section class="features" id="features">
+    <div class="section-label">// المميزات الرئيسية</div>
+    <h2 class="section-title">كل ما تحتاجه في أداة واحدة</h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>OSINT APIs مزدوج</h3>
+        <p>تكامل مع Numverify و IPQualityScore للحصول على معلومات الشركة، نوع الخط، ومستوى الخطر.</p>
+        <div class="feature-tag">Numverify · IPQS</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>أرشيف الإنترنت</h3>
+        <p>بحث تلقائي في Archive.org بصيغتين للرقم للكشف عن أي آثار رقمية تاريخية.</p>
+        <div class="feature-tag">Archive.org API</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>شبكات التواصل</h3>
+        <p>روابط بحث مباشرة لـ Google، Facebook، Instagram، TikTok، LinkedIn، Twitter/X، وأكثر.</p>
+        <div class="feature-tag">10+ منصة</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗄️</div>
+        <h3>قاعدة بيانات محلية</h3>
+        <p>كل فحص يتحفظ تلقائياً في SQLite مع تاريخ ووقت، مع عرض آخر 10 فحوصات عند التشغيل.</p>
+        <div class="feature-tag">SQLite · Local</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>دعم متعدد الدول</h3>
+        <p>قائمة دول تختار منها تلقائياً، مع دعم خاص لأرقام فلسطين وإسرائيل والأردن والسعودية ومصر.</p>
+        <div class="feature-tag">7+ دول</div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>إعدادات ذكية</h3>
+        <p>يسألك عن API keys مرة واحدة فقط ويحفظها في config.json — لا داعي لإعادة الإدخال.</p>
+        <div class="feature-tag">config.json</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░ INSTALL ░░ -->
+  <section class="install" id="install">
+    <div class="section-label">// التثبيت والتشغيل</div>
+    <h2 class="section-title">ابدأ في دقيقتين</h2>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>استنسخ المشروع</h3>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+            <code>git clone https://github.com/satalet/phone-osint-v4-test.git
+cd phone-osint-v4-test</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>ثبّت المتطلبات</h3>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+            <code>pip install phonenumbers</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>شغّل الأداة</h3>
+          <div class="code-block">
+            <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+            <code>python3 phone_crawler_v4.py</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>أضف API Keys (اختياري)</h3>
+          <p class="step-note">البرنامج سيسألك تلقائياً عند التشغيل الأول. احصل عليها مجاناً من:</p>
+          <div class="api-links">
+            <a href="https://numverify.com/product" target="_blank" class="api-link">Numverify ↗</a>
+            <a href="https://www.ipqualityscore.com/create-account" target="_blank" class="api-link">IPQualityScore ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">PHONE<span class="accent">OSINT</span></span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <p class="footer-note">
+      مشروع مفتوح المصدر — للاستخدام الأخلاقي والتعليمي فقط.<br />
+      تأكد دائماً من الالتزام بالقوانين المحلية عند استخدام أدوات OSINT.
+    </p>
+    <div class="footer-links">
+      <a href="https://github.com/satalet/phone-osint-v4-test" target="_blank">GitHub</a>
+      <span>·</span>
+      <a href="https://numverify.com" target="_blank">Numverify</a>
+      <span>·</span>
+      <a href="https://ipqualityscore.com" target="_blank">IPQS</a>
+    </div>
+    <p class="footer-copy">© 2026 Phone OSINT v4 · Built with Python & phonenumbers</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
