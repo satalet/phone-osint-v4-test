@@ -221,7 +221,8 @@ def check_archive(phone_e164, national_number):
                 "samples": [{"title": d.get("title","—"), "identifier": d.get("identifier","")} for d in docs[:3]]
             }
 
-   return results
+    return results
+
 def build_osint_links(parsed: phonenumbers.PhoneNumber) -> dict:
     region     = phonenumbers.region_code_for_number(parsed) or "il"
     national   = str(parsed.national_number)
@@ -229,13 +230,10 @@ def build_osint_links(parsed: phonenumbers.PhoneNumber) -> dict:
     intl_full  = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
 
     return {
-        # ── المتصفح (مواقع ما إلها تطبيقات بالضرورة) ──
         "Truecaller": f"https://www.truecaller.com/search/{region.lower()}/{e164_clean}",
         "Google":     f"https://www.google.com/search?q=%220{national}%22+OR+%22{urllib.parse.quote(intl_full)}%22",
         "NumLookup":  f"https://www.numlookupapi.com/lookup?phone={e164_clean}",
         "Archive.org": f"https://web.archive.org/web/*/\"{e164_clean}\"",
-        
-        # ── روابط عميقة (Deep Links) لإجبار الجوال على فتح التطبيق ──
         "WhatsApp":   f"whatsapp://send?phone={e164_clean}",
         "Instagram":  f"instagram://tag?name={e164_clean}",
         "Twitter/X":  f"twitter://search?query=0{national}",
