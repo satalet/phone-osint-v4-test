@@ -220,29 +220,28 @@ def check_archive(phone_e164, national_number):
                 "count": data["response"]["numFound"],
                 "samples": [{"title": d.get("title","—"), "identifier": d.get("identifier","")} for d in docs[:3]]
             }
-    return results
 
-def build_osint_links(parsed):
-    region    = phonenumbers.region_code_for_number(parsed) or "il"
-    national  = str(parsed.national_number)
-    e164c     = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164).replace("+","")
-    intl_full = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
-    google_url = (
-        f"https://www.google.com/search?q="
-        f"%220{national}%22+OR+"
-        f"%22{urllib.parse.quote(intl_full)}%22"
-    )
+   return results
+def build_osint_links(parsed: phonenumbers.PhoneNumber) -> dict:
+    region     = phonenumbers.region_code_for_number(parsed) or "il"
+    national   = str(parsed.national_number)
+    e164_clean = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164).replace("+", "")
+    intl_full  = phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)
+
     return {
-        "Truecaller": f"https://www.truecaller.com/search/{region.lower()}/{e164c}",
-        "Google":     google_url,
-        "NumLookup":  f"https://www.numlookupapi.com/lookup?phone={e164c}",
-        "WhatsApp":   f"https://wa.me/{e164c}",
-        "Facebook":   f"https://www.facebook.com/search/top?q=0{national}",
-        "Instagram":  f"https://www.instagram.com/explore/tags/{national}/",
-        "LinkedIn":   f"https://www.linkedin.com/search/results/all/?keywords=0{national}",
-        "Twitter/X":  f"https://x.com/search?q=0{national}&f=top",
-        "TikTok":     f"https://www.tiktok.com/search?q=0{national}",
-        "Archive.org": f"https://web.archive.org/web/*/\"{e164c}\"",
+        # ── المتصفح (مواقع ما إلها تطبيقات بالضرورة) ──
+        "Truecaller": f"https://www.truecaller.com/search/{region.lower()}/{e164_clean}",
+        "Google":     f"https://www.google.com/search?q=%220{national}%22+OR+%22{urllib.parse.quote(intl_full)}%22",
+        "NumLookup":  f"https://www.numlookupapi.com/lookup?phone={e164_clean}",
+        "Archive.org": f"https://web.archive.org/web/*/\"{e164_clean}\"",
+        
+        # ── روابط عميقة (Deep Links) لإجبار الجوال على فتح التطبيق ──
+        "WhatsApp":   f"whatsapp://send?phone={e164_clean}",
+        "Instagram":  f"instagram://tag?name={e164_clean}",
+        "Twitter/X":  f"twitter://search?query=0{national}",
+        "TikTok":     f"snssdk1233://search?keyword=0{national}",
+        "LinkedIn":   f"linkedin://search/?keywords=0{national}",
+        "Facebook":   f"fb://search/?keyword=0{national}", 
     }
 
 def open_links_menu(links):
